@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.authtoken.models import Token
 
 from . import models
 
@@ -12,4 +13,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class TokenSerializer(serializers.ModelSerializer):
-    pass
+    
+    class Meta:
+        model = Token
+        fields=('key', 'user')

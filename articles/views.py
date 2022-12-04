@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .models import Article
 from .serializers import ArticleSerializer
+from .permissions import IsAuthorOrReadOnly
 
 class ArticleListAPIView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
@@ -14,8 +15,8 @@ class ArticleListAPIView(generics.ListCreateAPIView):
         serializer.save(author = self.request.user)
 
 class ArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthorOrReadOnly,)
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    
+
 

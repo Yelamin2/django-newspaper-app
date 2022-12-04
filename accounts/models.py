@@ -8,7 +8,8 @@ class User(AbstractUser):
     pass
 
 class Profile(models.Model):
-    avatar = models.ImageField(upload_to='profiles/')
+    avatar = models.ImageField(
+        upload_to='profiles/',default='profiles/default.jpeg')
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
 
