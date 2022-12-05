@@ -1,0 +1,10 @@
+.displayed-img{
+    max-width: 640px;
+    position: relative;
+    align-self: center;
+    padding: 5px;
+}
+li{
+    margin-top: 25px;
+    list-style: none;
+}

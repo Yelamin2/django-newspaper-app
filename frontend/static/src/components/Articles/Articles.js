@@ -3,14 +3,17 @@ import {useState, useEffect, useCallback} from "react";
 import Cookies from "js-cookie";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import defaultArticleImage from "../../images/default.jpeg";
+import Card from "react-bootstrap/Card";
+import './Articles.css'
+import defaultArticleImage from "../../images/articles_default.jpeg";
 
 var articlesList = {};
 
 function Article(){
     const [articles, setArticles] = useState(null);
-    const [addArticle, setAddArticle] = useState([{title:"", body:"", image:""}]);
-
+    const [preview, setPreview] =useState(defaultArticleImage);
+    const [addArticle, setAddArticle] = useState([{title:"", body:"", image:preview}]);
+    
     const handleError = (err) => {
         console.warn(err);
     }
@@ -43,7 +46,7 @@ function Article(){
             <li key={id}>
                 <h2>{articles.title}</h2>
                 <div><img
-                class="displayed-img "
+                className="displayed-img "
                 src={articles.image}
                 alt={articles.title} />
                 </div>
@@ -94,6 +97,41 @@ function Article(){
 
         console.log("ARTICLES", articles);
 
+        const handleImage = (event) => {
+            const file = event.target.files[0];
+            // saveImage(file);
+            const reader = new FileReader();
+            
+            reader.onloadend = async () => {
+              setPreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+            
+          };
+        //   const saveImage = async (file) => {
+        //     const formData = new FormData();
+        //     formData.append("avatar", file)
+      
+        //     const {id } = profile;
+      
+        //     const options = {
+        //       method: `${id ? "PUT" : "POST"}`,
+        //       headers: {
+        //         "X-CSRFToken": Cookies.get("csrftoken"),
+        //       },
+        //       body: formData,
+        //     };
+      
+        //     const response = await fetch(
+        //       `/api-v1/profile/${id ? "user/": ""}`,
+        //       options
+        //     );
+        //     if (!response.ok){
+        //       throw Error("Wrong");
+        //     }
+        //   }
+        
+
 
 
     
@@ -105,6 +143,15 @@ function Article(){
         <>
 
             <Form onSubmit={handleSubmit}>
+
+            <Card style= {{width: "18rem"}} className = "mx-auto">
+                <div className= "profile-image-container">
+                <Card.Img variant="top" src={preview}/>
+                <input type="file" name="imager" onChange={handleImage}/>
+                </div>
+                <Card.Body>
+            </Card.Body>
+            </Card>
             <Form.Group className="mb-4" controlId="title">
                 <Form.Label> </Form.Label>
                 <Form.Control 
