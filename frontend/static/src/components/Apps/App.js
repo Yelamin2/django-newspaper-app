@@ -62,7 +62,7 @@ function App() {
     <Container className='container'  >
         <Outlet context={{ setIsAuth, navigate, user}} />
       </Container>
-    <div className="App"><p>Just DO it</p>
+    <div className="App">
       {/* <Header />Any thing */}
       {/* <RegistrationForm />
       <LoginForm /> */}

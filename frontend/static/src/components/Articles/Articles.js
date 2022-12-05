@@ -3,12 +3,13 @@ import {useState, useEffect, useCallback} from "react";
 import Cookies from "js-cookie";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+// import defaultArticleImage from "../../images/default.jpeg";
 
-const articlesList = {};
+var articlesList = {};
 
 function Article(){
     const [articles, setArticles] = useState(null);
-    const [addArticle, setAddArticle] = useState([{title:"", body:""}]);
+    const [addArticle, setAddArticle] = useState([{title:"", body:"", image:""}]);
 
     const handleError = (err) => {
         console.warn(err);
@@ -34,17 +35,23 @@ function Article(){
         
     },[getArticles]);
 
-    // console.log("ARTICLES", articles);
+    console.log("ARTICLES", articles);
 
     if( articles!=null){
-        const articlesList = articles.map((articles, id) => (
+        console.log("NOT NULL",articles);
+        articlesList = articles.map((articles, id) => (
             <li key={id}>
                 <h2>{articles.title}</h2>
-                <p>{articles.body}</p>
+                <div><img
+                class="displayed-img "
+                src={articles.image}
+                alt={articles.title} />
+                </div>
+                <div>{articles.body}</div>
             </li>
         ) 
         );
-        // articlesList;
+        // return articlesList;
     }
 
     const handleChange = (e) => {
@@ -96,7 +103,6 @@ function Article(){
     return (
         
         <>
-            <div>this is s div</div>
 
             <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-4" controlId="title">
@@ -120,6 +126,9 @@ function Article(){
                 Submit
             </Button>
             </Form>
+
+
+            <div>{articles? articlesList: ""}</div>
         </>
     )
 

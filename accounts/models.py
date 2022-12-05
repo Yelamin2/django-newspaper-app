@@ -12,6 +12,7 @@ class Profile(models.Model):
         upload_to='profiles/',default='profiles/default.jpeg')
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True)
+    user_name= models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.user.username

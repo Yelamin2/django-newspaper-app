@@ -10,6 +10,7 @@ function ProfileForm() {
     avatar:null,
   });
 
+
   const [preview, setPreview] =useState(defaultProfileImage);
   
   useEffect(() => {
@@ -68,10 +69,10 @@ function ProfileForm() {
       <Card style= {{width: "18rem"}} className = "mx-auto">
         <div className= "profile-image-container">
           <Card.Img variant="top" src={preview}/>
-          <input type="file" name="avatar" onchangge={handleImage}/>
+          <input type="file" name="avatar" onChange={handleImage}/>
         </div>
         <Card.Body>
-          <Card.Title>{profile.username?.toUpperCase()}</Card.Title>
+          <Card.Title>{profile.user_name?.toUpperCase()}</Card.Title>
         </Card.Body>
         </Card>
         );

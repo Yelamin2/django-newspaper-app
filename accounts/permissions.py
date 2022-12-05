@@ -13,7 +13,7 @@ class ProfilePermissions(permissions.BasePermission):
          elif request.method == 'DELETE':
             return obj.user == request.user or request.user.is_staff
          elif request.method == 'PUT':
-            return obj.user == request.user or request.user.is_staff
+            return obj.user == request.user 
          
          return obj.user == request.user
 
@@ -21,4 +21,4 @@ class ProfilePermissions(permissions.BasePermission):
 class IsOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         
-        return obj.author == request.user
+        return obj.user == request.user
