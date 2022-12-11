@@ -7,6 +7,8 @@ import ProfileForm from "../Profile/ProfileForm";
 import RegistrationForm from "../Registeration/RegisterationForm";
 import LoginForm from "../Login/LoginForm";
 import Articles from "../Articles/Articles";
+import AdminView from "../Views/AdminView";
+import EditorView from "../Views/EditorView";
 
 function Router(){
 
@@ -18,6 +20,8 @@ function Router(){
             <Route path="registration" element={<RegistrationForm />} />
             <Route path="profile" element={<ProfileForm />} />
             <Route path="article" element={<Articles/>}/>
+            <Route path="editorview" element={<EditorView/>}/>
+            <Route path="adminview" element={<AdminView/>}/>
           </Route>
           <Route
           //   // path="*"
