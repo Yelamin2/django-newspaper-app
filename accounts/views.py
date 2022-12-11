@@ -21,3 +21,12 @@ class ProfileDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_object(self):
         return get_object_or_404(models.Profile, user=self.request.user)
+
+class UsersListAPIView(generics.ListCreateAPIView):
+    queryset = models.User.objects.all()
+    serializer_class = serializers.UserSerializer
+
+    def get_object(self):
+        return get_object_or_404(models.Profile, user=self.request.user)
+
+    

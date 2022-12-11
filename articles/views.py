@@ -19,4 +19,10 @@ class ArticleDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
+    def perform_update(self, serializer):
+        serializer.save(author = self.request.user)
+
+    def perform_destroy(self, instance):
+        return super().perform_destroy(instance)
+
 

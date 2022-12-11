@@ -40,6 +40,10 @@ function Article(){
 
     console.log("ARTICLES", articles);
 
+    // 
+    // Get the articles listed fro view on home page
+    // 
+
     if( articles!=null){
         console.log("NOT NULL",articles);
         articlesList = articles.map((articles, id) => (
@@ -60,6 +64,10 @@ function Article(){
     const handleChange = (e) => {
         setAddArticle({...addArticle, [e.target.name]:e.target.value})
     };
+
+    // 
+    // For Editor to submit articles to be published
+    // 
 
 
     const handleSubmit =async (e) =>{
