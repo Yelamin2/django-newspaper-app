@@ -94,7 +94,7 @@ function AdminView(){
 
         {articles.is_published? '✅':'❌'} Published
       </div>
-                <p>Author : {users.filter(author => {return author.id===articles.author})}</p>
+                {/* <p>Author : {users.filter(author => {return users.id==articles.author})}</p> */}
             </li>
         ) 
         );
