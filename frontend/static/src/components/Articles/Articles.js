@@ -49,7 +49,7 @@ function Article(){
     if( articles!=null){
         console.log("NOT NULL",articles, user.pk);
         articlesList = articles.map((articles, id) => (
-            articles.author==user.pk? 
+            articles.is_published? 
             <li key={id}>
                 <h2>{articles.title}</h2>
                 <div><img
@@ -58,42 +58,42 @@ function Article(){
                 alt={articles.title} />
                 </div>
                 <div>{articles.body}</div>
-            </li>:<div>{articles.author}</div>
+            </li>:''
         ) 
         );
         // return articlesList;
     }
 
-    const handleChange = (e) => {
-        setAddArticle({...addArticle, [e.target.name]:e.target.value})
-    };
+    // const handleChange = (e) => {
+    //     setAddArticle({...addArticle, [e.target.name]:e.target.value})
+    // };
 
     // 
     // For Editor to submit articles to be published
     // 
 
 
-    const handleSubmit =async (e) =>{
-        e.preventDefault();
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": Cookies.get("csrftoken"),
-            },
-            body: JSON.stringify(addArticle),  
-        };
+    // const handleSubmit =async (e) =>{
+    //     e.preventDefault();
+    //     const options = {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "X-CSRFToken": Cookies.get("csrftoken"),
+    //         },
+    //         body: JSON.stringify(addArticle),  
+    //     };
 
-        const response= await fetch("/api_v1/articles/articles/", options).catch(
-            handleError
-        );
-        if(!response.ok){
-            throw new Error("Network not OK");
-        } else {
-            const data = await response.json();
-        }
+    //     const response= await fetch("/api_v1/articles/articles/", options).catch(
+    //         handleError
+    //     );
+    //     if(!response.ok){
+    //         throw new Error("Network not OK");
+    //     } else {
+    //         const data = await response.json();
+    //     }
         
-    } 
+    // } 
 
 
 
@@ -106,19 +106,19 @@ function Article(){
         //     </li>
         // ));
 
-        console.log("ARTICLES", articles);
+        // console.log("ARTICLES", articles);
 
-        const handleImage = (event) => {
-            const file = event.target.files[0];
-            // saveImage(file);
-            const reader = new FileReader();
+        // const handleImage = (event) => {
+        //     const file = event.target.files[0];
+        //     // saveImage(file);
+        //     const reader = new FileReader();
             
-            reader.onloadend = async () => {
-              setPreview(reader.result);
-            };
-            reader.readAsDataURL(file);
+        //     reader.onloadend = async () => {
+        //       setPreview(reader.result);
+        //     };
+        //     reader.readAsDataURL(file);
             
-          };
+        //   };
         //   const saveImage = async (file) => {
         //     const formData = new FormData();
         //     formData.append("avatar", file)
@@ -153,7 +153,7 @@ function Article(){
         
         <>
 
-            <Form onSubmit={handleSubmit}>
+            {/* <Form onSubmit={handleSubmit}>
 
             <Card style= {{width: "18rem"}} className = "mx-auto">
                 <div className= "profile-image-container">
@@ -183,7 +183,7 @@ function Article(){
             <Button variant="primary" type="submit">
                 Submit
             </Button>
-            </Form>
+            </Form> */}
 
 
             <div>{articles? articlesList: ""}</div>

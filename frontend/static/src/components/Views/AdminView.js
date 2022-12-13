@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 
+
 let usersList, articlesList;
 function AdminView(){
     const [users, setUsers] = useState(null);
@@ -66,7 +67,7 @@ function AdminView(){
             </li>
         ) 
         );
-        console.log(users[4]);
+       
       
     }
       // 
