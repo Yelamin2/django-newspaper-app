@@ -60,6 +60,9 @@ function EditorView(){
                 </div>
                 <div>{articles.body}</div>
                 <div>{articles.is_published? '✅':'❌'} Published</div>
+                <div>{articles.is_published? '': <div><Button>Edit</Button> <Button >Delete</Button></div>}</div>
+            
+            
             </li>:''
         ) 
         );
@@ -88,16 +91,6 @@ function EditorView(){
         
     } 
 
-
-
-    
-
-        // const articlesList = articles.map((articles, id) => (
-        //     <li key={id}>
-        //         <h2>{articles.title}</h2>
-        //         <p>{articles.body}</p>
-        //     </li>
-        // ));
 
         console.log("ARTICLES", articles);
 
