@@ -66,11 +66,13 @@ function AdminView(){
             </li>
         ) 
         );
+        console.log(users[4]);
       
     }
       // 
     // Get the articles listed for editor to update or delete
     // 
+    
 
     if( articles!=null){
         console.log("NOT NULL",articles);
@@ -94,7 +96,7 @@ function AdminView(){
 
         {articles.is_published? '✅':'❌'} Published
       </div>
-                {/* <p>Author : {users.filter(author => {return users.id==articles.author})}</p> */}
+                <p>Author : {users[articles.author-2].username}</p>
             </li>
         ) 
         );

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import defaultArticleImage from "../../images/articles_default.jpeg";
 
 
@@ -13,6 +14,7 @@ function EditorView(){
     const handleError = (err) => {
         console.warn(err);
     }
+    const {user}= useOutletContext();
 
     // Retrive articles from database
 
@@ -44,6 +46,7 @@ function EditorView(){
     if( articles!=null){
         console.log("NOT NULL",articles);
         articlesList = articles.map((articles, id) => (
+            articles.author==user.pk? 
             <li key={id}>
                 <h2>{articles.title}</h2>
                 <div><img
@@ -51,8 +54,9 @@ function EditorView(){
                 src={articles.image}
                 alt={articles.title} />
                 </div>
-                <div>{articles.body}</div>
-            </li>
+                <div>{articles.body}/n</div>
+                <div>{articles.is_published? '✅':'❌'} Published</div>
+            </li>:''
         ) 
         );
       
