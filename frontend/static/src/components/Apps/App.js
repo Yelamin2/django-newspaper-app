@@ -22,7 +22,7 @@ function App() {
       const response = await fetch("/dj-rest-auth/user/");
       if (!response.ok) {
         setIsAuth(false);
-        navigate("/");
+        navigate("/article/");
         // console.log("Not Auth");
       } else { 
         const data = await response.json();
