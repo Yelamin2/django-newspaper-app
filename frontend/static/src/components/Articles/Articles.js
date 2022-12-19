@@ -2,6 +2,8 @@
 import {useState, useEffect, useCallback, useReducer} from "react";
 import Cookies from "js-cookie";
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from "react-bootstrap/esm/Col";
 import Form from 'react-bootstrap/Form';
 import Card from "react-bootstrap/Card";
 import './Articles.css'
@@ -67,9 +69,19 @@ function Article(){
     return (
         
         <>
+        <div>
+            <Row>
+                <Col style={{fontWeight:900, fontSize:24}}>News Our Way</Col>
+                <Col>Politics</Col>
+                <Col>Business</Col>
+                <Col>Travel</Col> 
+                <Col>Entertainment</Col>           
+            </Row>
+
+        </div>
 
 
-            <div>{articles? articlesList: ""}</div>
+        <div>{articles? articlesList: ""}</div>
         </>
     )
 
