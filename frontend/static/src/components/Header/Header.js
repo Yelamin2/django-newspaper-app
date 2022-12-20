@@ -39,15 +39,26 @@ function Header({ isAuth, setIsAuth, navigate,is_customer,user}) {
       <Link className="navbar-expand navbar-nav nav-link tabhome"  to="/article/">
          Home
         </Link>
-          {isAuth ? (
+          {isAuth && user.username!='admin'? (
+            <><Link className="navbar-expand navbar-nav nav-link "  to="/editorview/">
+            Editorview
+           </Link>
           <Button
             variant="link"
             className="navbar-expand navbar-nav nav-link ms-auto border-0 tab"
             onClick={handleLogout}
           >
             Logout
-          </Button>
-        ) : (
+          </Button></>
+        ) : user.username=='admin'? <><Link className="navbar-expand navbar-nav nav-link "  to="/adminview/">
+        Adminview
+       </Link><Button
+            variant="link"
+            className="navbar-expand navbar-nav nav-link ms-auto border-0 tab"
+            onClick={handleLogout}
+          >
+            Logout
+          </Button></> :  (
           <Link className="navbar-expand navbar-nav nav-link ms-auto tab" to="/login/">
             Login
           </Link>
